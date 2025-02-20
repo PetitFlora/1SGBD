@@ -47,12 +47,42 @@ Enfin, le client souhaite obtenir des requêtes SQL pour communiquer avec la Bas
 
 1. Écrire une requête SQL qui retourne la liste des étudiants. Pour chaque étudiant on souhaite seulement afficher les colonnes « nom » et « prénom » que l’on va renommer respectivement en « last_name », « first_name ». (**2 pts**)
 
+   ```SQL
+   ALTER TABLE ETUDIANT RENAME COLUMN NOM TO LAST_NAME;
+   ```
+
+   ```SQL
+   ALTER TABLE ETUDIANT RENAME COLUMN PRENOM TO FIRST_NAME;
+   ```
+
+   ```SQL
+   SELECT LAST_NAME, FIRST_NAME FROM ETUDIANT
+   ```
+
 2. Proposer une requêtes SQL qui affiche la liste des retards des étudiants considéré comme non justifiés et de plus de dix minutes. On va ordonner les résultats par temps de retard descendant, donc du retard le plus long au plus cours. (**2 pts**).
 
+   ```SQL
+   SELECT ETUDIANT.LAST_NAME, ETUDIANT.FIRST_NAME, ABSENCE.DATE_ABSENCE, ABSENCE.MINUTES_ABSENCE, ABSENCE.JUSTIFICATION 
+   FROM ABSENCE 
+   JOIN ETUDIANT ON ETUDIANT.ID = ABSENCE.ID_ETUDIANT
+   WHERE JUSTIFICATION IS NULL AND MINUTES_ABSENCE > 10
+   ORDER BY ABSENCE.MINUTES_ABSENCE DESC;
+   ```
+
 3. Afficher toutes les notes comprises entre et 15 et 20 qui ont été publié pendant l’année en cours. Pour chaque note, on souhaite aussi afficher le nom et prénom de l’étudiant et l’adresse email de l’enseignant qui a publié la note (**6 pts**)
+
+   ```SQL
+   SELECT ETUDIANT.LAST_NAME, ETUDIANT.FIRST_NAME, ENSEIGNANT.EMAIL, NOTE.NOTE
+   FROM NOTE
+   JOIN ETUDIANT ON ETUDIANT.ID = NOTE.ID_ETUDIANT
+   JOIN ENSEIGNANT ON ENSEIGNANT.ID = NOTE.ID_ENSEIGNANT
+   WHERE NOTE.NOTE BETWEEN 15 AND 20
+   ```
 
 ### BONUS
 
 Proposer un script .sql qui utilise des requêtes INSERT pour insérer une série de données dans votre nouvelle base de données. (**4 pts**)
+
+[voir `tables.sql`](./tables.sql)
 
 Note : *La requête INSERT sera vue en détail l’année prochaine pendant le cours 2SGBD. Prenez une étape d’avance en essayant le bonus !*
