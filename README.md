@@ -35,11 +35,13 @@ Enfin l’école souhaite ajouter une gestion des absences des étudiants, pour 
 
 Dans cette partie, l’objectif est de proposer une structure de Base De Donnée au client que vous allez concevoir pour gérer les données de l’école. Commencez par proposer un schéma UML (de type ERD : **E**ntity **R**elationship **M**odeling) qui sera partagé avec le client pour aider à comprendre le schéma. Vous pouvez ajouter des attributs et des tables supplémentaires pour répondre aux besoins, le nom des tables et des attributs. C’est à vous de déterminer les types des attributs. (**15 pts**).
 
-![Shémas UML](./schema-UML.drawio.png)
-
 On va aussi faire attention de bien normaliser le schéma à la troisième Forme Normal, donc 3FN. (**5 pts**)
 
+![Shémas UML](./schema-UML.drawio.png)
+
 Ensuite, écrire un script dans un fichier .sql qui est capable de générer toute la structure de la BDD : tables, colonnes, relations, contraintes (clés primaires, étrangères, uniques, etc.), etc. (**10 pts**).
+
+[voir `tables.sql`](./tables.sql)
 
 Enfin, le client souhaite obtenir des requêtes SQL pour communiquer avec la Base De Donnée pour faire des analyses.
 
